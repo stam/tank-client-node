@@ -11,6 +11,20 @@ class Api {
     });
   }
 
+  async getWorld() {
+    const response = await fetch(`${this.baseUrl}/world`);
+    return response.json();
+  }
+
+  async createTank(name) {
+    const response = await this.post("subscribe", {
+      name,
+    });
+    const data = await response.json();
+
+    return data.subscribed;
+  }
+
   async fire(tankId) {
     console.log("Firing");
     return this.post("tank", {
