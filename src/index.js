@@ -1,7 +1,7 @@
 const Api = require("./api");
 
 const SERVER_URL = "http://localhost:3000";
-const TANK_NAME = "my_tank_name";
+const TANK_NAME = "my_node_tank";
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(), ms));
@@ -34,12 +34,12 @@ class Bot {
     console.log("tankId:", this.tankId);
 
     while (true) {
-      await this.doStuff();
+      await this.sendCommand();
       await delay(this.turnDelay);
     }
   }
 
-  async doStuff() {
+  async sendCommand() {
     const directions = ["north", "east", "south", "west"];
 
     console.log();
